@@ -1,4 +1,4 @@
-package data.access.mybatis.mapper;
+package data.access.orm.mybatis.mapper;
 
 import data.access.entity.People;
 import org.apache.ibatis.annotations.Select;

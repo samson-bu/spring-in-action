@@ -1,23 +1,18 @@
 package data.access.jdbc.config;
 
-import data.access.config.BaseConfig;
-import org.springframework.beans.factory.annotation.Autowired;
+import data.access.config.PersistenceConfig;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
 @Configuration
-@Import(BaseConfig.class)
-public class JdbcConfig {
-
-    @Autowired
-    private DataSource dataSource;
+public class JdbcConfig extends PersistenceConfig {
 
     @Bean
-    public JdbcTemplate createJdbcTemplate() {
+    public JdbcTemplate createJdbcTemplate(@Param("dataSource")DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
 }

@@ -1,7 +1,7 @@
-package data.access.mybatis.dao;
+package data.access.dao;
 
 import data.access.entity.People;
-import data.access.mybatis.mapper.PeopleMapper;
+import data.access.orm.mybatis.mapper.PeopleMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ public class PeopleDao {
     }
 
     public People getPeople2(String strId) {
-        People p = session.selectOne("data.access.mybatis.mapper.PeopleMapper.getPeople", strId);
+        People p = session.selectOne("data.access.orm.mybatis.mapper.PeopleMapper.getPeople", strId);
         return p;
     }
 }

@@ -8,12 +8,14 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @ContextConfiguration(classes = {JdbcConfig.class})
+@ActiveProfiles(profiles = {"qa"})
 public class JdbcDemoTest extends DemoTest {
     @Autowired
     private JdbcOperations jdbcOperations;
@@ -29,6 +31,6 @@ public class JdbcDemoTest extends DemoTest {
             }
         });
 
-        Assert.assertEquals("People(id=1, name=zhangsa, age=28)", p.toString());
+        Assert.assertEquals("People(id=1, name=zhangsa, age=12)", p.toString());
     }
 }

@@ -1,16 +1,20 @@
-package data.access.mybatis;
+package data.access.orm.mybatis;
 
 import data.access.DemoTest;
+import data.access.config.ComponentConfig;
+import data.access.dao.PeopleDao;
 import data.access.entity.People;
-import data.access.mybatis.config.MyBatisConfig;
-import data.access.mybatis.dao.PeopleDao;
+import data.access.orm.mybatis.config.MybatisConfig;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
-@ContextConfiguration(classes = {MyBatisConfig.class})
-public class MyBatisDemoTest extends DemoTest {
+@ContextConfiguration(classes = {MybatisConfig.class, ComponentConfig.class})
+@ActiveProfiles(profiles = {"dev"})
+public class MybatisTest extends DemoTest {
+
     @Autowired
     private PeopleDao peopleDao;
 
@@ -24,4 +28,5 @@ public class MyBatisDemoTest extends DemoTest {
         Assert.assertEquals(p.toString(), p2.toString());
 
     }
+
 }
